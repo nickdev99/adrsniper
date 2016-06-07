@@ -1,0 +1,33 @@
+<%- model_class = Watch -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:search_start_date) %>:</strong></dt>
+  <dd><%= @watch.search_start_date %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:search_end_date) %>:</strong></dt>
+  <dd><%= @watch.search_end_date %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:party_size) %>:</strong></dt>
+  <dd><%= @watch.party_size %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:search_time_id) %>:</strong></dt>
+  <dd><%= @watch.search_time.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:restaurant_id) %>:</strong></dt>
+  <dd><%= @watch.restaurant.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:enabled) %>:</strong></dt>
+  <dd><%= @watch.enabled %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:expired) %>:</strong></dt>
+  <dd><%= @watch.expired %></dd>
+</dl>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              watches_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_watch_path(@watch), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              watch_path(@watch),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>

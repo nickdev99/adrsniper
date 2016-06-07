@@ -1,0 +1,26 @@
+<% @title="Announcement Index" %>
+<%- model_class = Announcement -%>
+
+<div class="container">
+    <div class="row" style="margin-top:7em">
+      <div class="col-sm-12 col-md-10 col-md-offset-1 col-xs-12">
+        <div class="page-header">
+          <h1><%= @title %></h1>
+        </div>
+            <% @announcements.each do |r| %>
+                <%= link_to "#{r.title}", edit_announcement_path(r), action: "show", controller: "announcements", id: r.id %>
+
+                <%= link_to announcement_path(r), :method => :delete, :class => 'btn', :data => { :confirm => "Are you sure?" } do %>
+                        <i class="glyphicon glyphicon-remove-sign"></i> Remove
+            <% end %>
+        <br />
+
+        <% end %>
+
+
+            <%= link_to t('.new', :default => t("helpers.links.new")),
+                    new_announcement_path,
+                    :class => 'btn btn-primary' %>
+
+    </div>
+</div>

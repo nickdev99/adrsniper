@@ -1,0 +1,243 @@
+<%- title @post_title %>
+<div class="blog-layout" id="blog-container">
+    <%= render :partial => "layouts/header"%>
+
+	<div class="page-wrapper">
+        <div class="banner" style="background-image:url('<%= @post_response["featured_image"] %>') ! important;">
+            <div class="overlay">
+                <div>
+                <div class="move-to-left animate">
+                    <div class="content">
+                        <h1><i class="fa fa-heart"></i><br><%= @post_title %></h1>
+                    </div>
+                </div>
+			</div>
+            </div>
+		</div>
+
+		<div class="content-wrapper">
+			<div class="move-to-left animate">
+				<div class="content">
+					<div class="blog-post">
+						<div class="head">
+							<div>
+								<i class="fa fa-calendar"></i>
+                                <a href="#"><time><%= @post_time %></time></a>
+							</div>
+							<div>
+								<i class="fa fa-user"></i>
+                                <a href="#" rel="author"><%= @user_name %></a>
+							</div>
+							<div>
+								<i class="fa fa-folder-open"></i>
+								<a href="#" rel="category">Polynesian Construction Updates</a>, <a href="#" rel="category">Resorts</a>
+							</div>
+						</div>
+						<div class="body">
+                            <%= raw @post_content %>
+						</div>
+						<div class="tags clearfix v-center">
+							<div class="icon-container">
+								<i class="fa fa-tags"></i>
+							</div>
+							<div class="tag-container">
+								<a href="#">Disney's Polynesian</a>, <a href="#">Poly</a>, <a href="#">Polynesian</a>, <a href="#">Polynesian Lobby</a>, <a href="#">Polynesian Village</a>
+							</div>
+						</div>
+					</div><!-- end blog-post -->
+					<div class="comments-container">
+	<div class="head heading text-center">3 Comments</div>
+	<div class="body">
+		<div class="comment">
+			<div class="contain">
+				<div class="comment-body">
+					<div class="author v-center">
+						<div>
+							<i class="fa fa-user"></i>
+						</div>
+						<div>
+							<div class="name">Rhonda</div>
+							<time>November 12, 2014 at 2:49 pm</time>
+						</div>
+					</div>
+					<div class="text">Is there any recent pictures of the pool? They said the construction should be finished the end of the month?</div>
+					<a href="#">Reply</a>
+				</div>
+
+				<div class="reply-comment">
+					<div class="comment-body">
+						<div class="author v-center">
+							<div>
+								<i class="fa fa-user"></i>
+							</div>
+							<div>
+								<div class="name">Rach</div>
+								<time>November 15, 2014 at 4:02 pm</time>
+							</div>
+						</div>
+						<div class="text">Thanks Joy :) We arrive the same day so that’s great to know.</div>
+						<a href="#">Reply</a>
+					</div>
+
+					<div class="reply-comment">
+						<div class="comment-body">
+							<div class="author v-center">
+								<div>
+									<i class="fa fa-user"></i>
+								</div>
+								<div>
+									<div class="name">Rach</div>
+									<time>November 15, 2014 at 4:02 pm</time>
+								</div>
+							</div>
+							<div class="text">Thanks Joy :) We arrive the same day so that’s great to know.</div>
+							<a href="#">Reply</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="comment">
+			<div class="contain">
+				<div class="comment-body">
+					<div class="author v-center">
+						<div>
+							<i class="fa fa-user"></i>
+						</div>
+						<div>
+							<div class="name">Joy</div>
+							<time>November 21, 2014 at 8:12 am</time>
+						</div>
+					</div>
+					<div class="text">We arrive at WL on 11/28. We received a call from DVC advising us the refurbishment project is on track and should be completed on time.</div>
+					<a href="#">Reply</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="reply">
+		<div class="contain">
+			<div class="title heading text-center">leave a reply</div>
+			<p class="text-center">Your email address will not be published. Required fields are marked *</p>
+
+			<form>
+				<div class="form-group">
+					<label for="nameInput">Name*</label>
+					<input id="nameInput" class="form-control" required>
+				</div>
+				<div class="form-group">
+					<label for="emailInput">Email*</label>
+					<input id="emailInput" type="email" class="form-control" required>
+				</div>
+				<div class="form-group">
+					<label for="websiteInput">Website</label>
+					<input id="websiteInput" class="form-control">
+				</div>
+				<div class="form-group">
+					<label for="websiteInput">Comment</label>
+					<textarea id="commentInput" class="form-control" rows="5" required></textarea>
+				</div>
+				<button type="submit" class="btn btn-default">Post Comment</button>
+			</form>
+		</div>
+	</div>
+</div><!-- end comments-container -->
+
+				</div><!-- end content -->
+			</div>
+
+			<div class="sidebar-container hidden-xs hidden-sm">
+				<div class="animate">
+					<div class="sidebar">
+	<button class="toggle-sidebar">
+		<i class="fa fa-magic"></i>
+	</button>
+
+	<div class="sidebar-content-wrapper">
+		<h3 class="text-center">Recent Posts</h3>
+		<div class="post-list">
+			<div class="post-title v-center">
+				<a href="#" class="title col-xs-10">Polynesian Village Construction Update</a>
+				<a href="#" class="col-xs-2"><i class="fa fa-chevron-circle-right"></i></a>
+			</div>
+			<div class="post-title v-center">
+				<a href="#" class="title col-xs-10">A new look at Peter Pan’s flight and the queue refurbishment</a>
+			</div>
+			<div class="post-title v-center">
+				<a href="#" class="title col-xs-10">Polynesian village resort construction update – december 2014</a>
+			</div>
+		</div>
+
+		<h3 class="text-center">Recent Comments</h3>
+		<div class="post-list">
+			<div class="post-title v-center">
+				<a href="#" class="title col-xs-10">Polynesian Village Construction Update</a>
+			</div>
+			<div class="post-title v-center">
+				<a href="#" class="title col-xs-10">A new look at Peter Pan’s flight and the queue refurbishment</a>
+			</div>
+			<div class="post-title v-center">
+				<a href="#" class="title col-xs-10">Polynesian village resort construction update – december 2014</a>
+			</div>
+		</div>
+
+		<h3 class="text-center">Categories</h3>
+		<div class="post-list categories">
+			<div class="post-title v-center">
+				<a href="#" class="title col-xs-10">adr challenge</a>
+			</div>
+			<div class="post-title v-center">
+				<a href="#" class="title col-xs-10">christmas at walt disney world</a>
+			</div>
+			<div class="post-title v-center">
+				<a href="#" class="title col-xs-10">event reviews</a>
+			</div>
+			<div class="post-title v-center">
+				<a href="#" class="title col-xs-10">food reviews</a>
+			</div>
+			<div class="post-title v-center">
+				<a href="#" class="title col-xs-10">in the parks</a>
+			</div>
+		</div>
+	</div>
+</div><!-- end sidebar -->
+				</div>
+			</div>
+		</div>
+
+
+		<div class="related-posts">
+			<h2 class="text-center hidden-xs">Related posts</h2>
+			<h3 class="text-center visible-xs">Related posts</h3>
+
+			<div class="row">
+				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+	<div class="post">
+		<img src="assets/images/post-1.jpg">
+		<div class="overlay">
+			<div class="title">holiday celebrations in full swing</div>
+			<a href="#"><i class="fa fa-chevron-circle-right"></i></a>
+		</div>
+	</div>
+</div>
+<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+	<div class="post">
+		<img src="assets/images/post-2.jpg">
+		<div class="overlay">
+			<div class="title">star wars in the park walking around</div>
+			<a href="#"><i class="fa fa-chevron-circle-right"></i></a>
+		</div>
+	</div>
+</div>
+<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+	<div class="post">
+		<img src="assets/images/post-3.jpg">
+		<div class="overlay">
+			<div class="title">come visit santa claus today</div>
+			<a href="#"><i class="fa fa-chevron-circle-right"></i></a>
+		</div>
+	</div>
+</div>
+
+			</div>
+		</div><!-- end related-posts -->

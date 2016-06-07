@@ -1,0 +1,16 @@
+
+crt_product:
+  id: 1
+  name: Watch
+  invoice_description: Watch you bought
+  human_description: I like watches
+  has_recur: yup
+  recur_every: 8
+  recur_type: month
+  price_cents: 10000
+  elite_price_cents: 10000
+  elite_only: false
+  elite_auto: false
+  non_elite_only: false
+  max_qty: 1000
+  passthru_model_name: Watch young men turn watches to cash.

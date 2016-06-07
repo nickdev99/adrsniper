@@ -1,0 +1,125 @@
+<%- title = @dine_name %>
+<div class="restaurant-layout" id="restaurant-container">
+    <%= render :partial => 'layouts/header' %>
+	<div class="page-wrapper">
+		<div class="banner">
+			<div>
+				<div class="container">
+					
+                    <h1><%= @dine_name %></h1>
+
+					<div class="overview">
+                        <div class="v-center">
+                            &nbsp;
+							<%# <span class="rating">
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star-half-o"></i>
+								<i class="fa fa-star-o"></i>
+							</span>
+                            <span class="reviews">(735 reviews)</span> %>
+						</div>
+						<div>
+							<span>Steakhouse</span><span class="delimiter">|</span>
+							<span>Magic Kingdom</span><span class="delimiter">|</span>
+                            <span><%= "$"*@venue_meta.price_rating %></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="sub-navigation hidden-xs">
+			<ul class="nav nav-tabs" role="tablist">
+				<li><a href="#">Reservation</a></li>
+				<li><a href="#about">About</a></li>
+				<li><a href="#photos">Photos</a></li>
+				<li><a href="#menu">Menu</a></li>
+				<li><a href="#">Special Offers</a></li>
+				<li><a href="#reviews">Reviews</a></li>
+			</ul>
+		</div>
+
+		<div class="result-container container clearfix">
+			<div class="pull-right" id="affix">
+				<div class="row sidebar">
+					<form class="search-box" action="search.html">
+	<div class="wrapper">
+		<h3>SEARCH for openings</h3>
+
+		<select class="selectpicker longinput">
+			<option style="display: none" selected disabled>Location</option>
+			<option>First location</option>
+			<option>Second location</option>
+		</select>
+
+		<div class="clearfix">
+			<input class="datepicker shortinput pull-left" placeholder="Date Range" class="datepicker">
+			<span class="delimiter">–</span>
+			<input class="datepicker shortinput pull-right" placeholder="End" class="datepicker">
+		</div>
+
+		<div class="clearfix">
+			<select class="selectpicker shortinput pull-left">
+				<option style="display: none" selected disabled>Time</option>
+				<option>12:00</option>
+				<option>13:00</option>
+			</select>
+			<select class="selectpicker shortinput pull-right">
+				<option style="display: none" selected disabled>Party Size</option>
+				<option>2</option>
+				<option>3</option>
+			</select>
+		</div>
+
+		<a class="toggle-restaurant-input" href="#">Specify Restaurant</a>
+		<input class="restaurant-input longinput" disabled placeholder="Enter Restaurant Name...">
+	</div>
+
+	<input class="submit-button" type="submit" value="Submit">
+</form>
+				</div>
+			</div>
+			<div class="pull-left">
+				<div class="content">
+
+					<div class="collapse-container mobile-only-collapse" id="about">
+						<div class="title">
+							<a data-toggle="collapse" href="#collapseOverview" aria-expanded="true">
+								<span>Overview</span>
+							</a>
+						</div>
+						<div class="collapse in reviews" id="collapseOverview">
+							
+							<div class="about">
+                                <div class="title">About <%= @dine_name %></div>
+                                <div class="description">
+                                    <%= raw @dine_description %>
+								</div>
+							</div>
+
+							<div class="photos" id="photos">
+								<div class="title">Photos</div>
+								<div class="row">
+									<div class="col-xs-6 col-sm-3">						
+										<img src="assets/images/restaurant-1.jpg">
+									</div>
+									<div class="col-xs-6 col-sm-3">						
+										<img src="assets/images/restaurant-2.jpg">
+									</div>
+									<div class="col-xs-6 col-sm-3">						
+										<img src="assets/images/restaurant-3.jpg">
+									</div>
+									<div class="col-xs-6 col-sm-3">						
+										<img src="assets/images/restaurant-4.jpg">
+									</div>
+								</div>
+							</div>
+
+										</div>
+							</div>
+						
+				</div><!-- end content -->
+			</div>
+		</div><!-- end result-container -->

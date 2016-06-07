@@ -1,0 +1,13 @@
+<%- model_class = Watch -%>
+
+<div class="container">
+    <div class="row" style="margin-top:7em">
+        <div class="page-header">
+          <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize %></h1>
+        </div>
+        <% @watch.errors.full_messages.each do |err| %>
+            <div class="validation_error"><%= err %></div><br />
+        <% end %>
+        <%= render :partial => 'form' %>
+    </div>
+</div>

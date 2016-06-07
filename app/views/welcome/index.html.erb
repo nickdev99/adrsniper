@@ -1,0 +1,270 @@
+<%= render :partial => "layouts/head"%>
+<div class="homepage" id="homepage-container">
+
+<%= render :partial => "layouts/header"%>
+	<div class="page-wrapper">
+		<div id="header-carousel">
+			<div class="carousel">
+				<div>
+					<div class="fill" style="background-image:url('/assets/IMG_6060.JPG');"></div>
+					<div class="overlay">
+						<div class="banner">
+							<div class="text-container">
+								<div class="title-arc arc-text" data-radius="350">Wizard Hats Inside</div>
+								<div class="title" style="font-family: Permanent Marker ! important;">Hollywood Blvd: Thru the Years</div>
+								<button class="red-button large hidden-xs"><span>Read More</span></button>
+								<button class="red-button visible-xs-inline-block"><span>Read More</span></button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div>
+					<div class="fill" style="background-image:url('/assets/tsumtsum.jpg');"></div>
+					<div class="overlay">
+						<div class="banner">
+							<div class="text-container">
+								<div class="title-arc arc-text" data-radius="350">Stack, Collect, Connect</div>
+								<div class="title" style="font-family: Coming Soon ! important;">Meet the TsumTsum</div>
+								<button class="red-button large hidden-xs"><span>Read More</span></button>
+								<button class="red-button visible-xs-inline-block"><span>Read More</span></button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="arrow left"></div>
+			<div class="arrow right"></div>	
+		</div><!-- end header-carousel -->
+
+		<div class="castle-overlay">
+			<h3 class="text-center">latest wdw news</h3>
+
+            <div class="wdw-container">
+                <%= render :partial => "layouts/news_item", collection: @news, as: :n %>
+			</div><!-- end wdw-container -->
+
+
+		</div><!-- end castle-overlay -->
+
+		<div class="castle-container">
+			<div class="button-container text-center">
+				<button class="red-button"><span>More News</span></button>
+			</div>
+
+			<div class="position-relative">
+				<img class="castle" src="/assets/mk-overview.jpg">
+				<img class="i-hand" src="/assets/i-hand.png">
+			</div>
+
+			
+			<div class="hungry-for-more-container">
+				<div class="col-lg-3 col-md-3 col-sm-2 col-xs-12"></div>
+				<div class="hungry-for-more text-center">
+					<div class="title">Hungry for more?</div>
+					<div class="description">WDW Tools restaurant watch tool allows<br> you to lorem ipsum dolor sit amet</div>
+					<a href="#">Learn More</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="dining-container">
+			<div class="container">
+				<h2 class="text-center hidden-xs">dining at wdw</h2>
+				<div class="col-sm-3 col-xs-2"></div>
+				<div class="col-sm-6 col-xs-8">
+					<h3 class="text-center visible-xs">dining at wdw</h2>
+					<p>Dining at the Disney Parks doesn’t have to be difficult, we provide the reviews and the tools to help you find and book the table you and your family have been waiting for.</p>
+				</div>
+
+				<div class="clearfix">
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+						<div class="column-title">popular restaurants</div>
+
+						<div class="post">
+							<div class="img" style="background-image: url(/assets/dining-1.jpg)"></div>
+							<div>						
+								<div class="title">Capa</div>
+								<div class="description">Fine/Signature Dining</div>
+								<div class="description">Prices Vary / Steakhouse</div>
+							</div>
+						</div>
+						
+						<div class="post">
+							<div class="img" style="background-image: url(/assets/dining-2.jpg)"></div>
+							<div>
+								<div class="title">Disney Resorts Pizza Delivery</div>
+								<div class="description">Room Service</div>
+								<div class="description">$, American</div>
+							</div>
+						</div>
+						
+						<div class="post">
+							<div class="img" style="background-image: url(/assets/dining-3.jpg)"></div>
+							<div>
+								<div class="title">Cove Bar</div>
+								<div class="description">Counter Service</div>
+								<div class="description">$, American</div>
+							</div>
+						</div>
+
+						<div class="post">
+							<div class="img" style="background-image: url(/assets/dining-4.jpg)"></div>
+							<div>
+								<div class="title">Gasparilla Island Grill</div>
+								<div class="description">Counter Service</div>
+								<div class="description">$, American</div>
+							</div>
+						</div>
+					</div><!-- end col -->
+
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+						<div class="column-title">hot spots this week</div>
+
+						<div class="post">
+							<div class="img" style="background-image: url(/assets/dining-5.jpg)"></div>
+							<div>
+								<div class="title">Uzima Springs Pool Bar</div>
+								<div class="description">Counter Service, Pool Bar</div>
+								<div class="description">$, American</div>
+							</div>
+						</div>
+						
+						<div class="post">
+							<div class="img" style="background-image: url(/assets/dining-6.jpg)"></div>
+							<div>
+								<div class="title">The Mara</div>
+								<div class="description">Fast Casual</div>
+								<div class="description">$, American, African</div>
+							</div>
+						</div>
+						
+						<div class="post">
+							<div class="img" style="background-image: url(/assets/dining-7.jpg)"></div>
+							<div>
+								<div class="title">Victoria Falls Lounge</div>
+								<div class="description">Lounges</div>
+								<div class="description">$, American</div>
+							</div>
+						</div>
+
+						<div class="post">
+							<div class="img" style="background-image: url(/assets/dining-8.jpg)"></div>
+							<div>
+								<div class="title">Ice Cream Truck</div>
+								<div class="description">Experiences Vary</div>
+								<div class="description">$, American</div>
+							</div>
+						</div>
+					</div><!-- end col -->
+				</div>
+			</div><!-- end container -->
+
+			<div class="text-center">
+				<button class="red-button"><span>More Dining</span></button>
+			</div>
+		</div><!-- end dining-container -->
+
+		<div class="docs-container">
+			<div class="row v-center">
+				<div class="col-sm-6 col-xs-12 text-center">
+					<img class="img-responsive" src="/assets/docs.png">
+				</div>
+				<div class="col-sm-6 col-xs-12 text-wrapper">
+					<div>
+						<div class="title">Sign up to receive our helpful documents</div>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in varius erat. Nam id felis eu felis consequat adipiscing. Suspendisse</p>
+						<a href="#">Try it</a>
+					</div>
+				</div>
+			</div>
+		</div><!-- end docs-container -->
+
+		<div class="pricing-container text-center">
+			<h2 class="larger hidden-xs">Pricing</h2>
+			<h3 class="larger visible-xs">Pricing</h2>
+			<p>We offer great plans. Find the one that suits your needs.</p>
+
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-right">			
+				<div class="price-block inverted">
+					<div class="inline-block"><i class="fa fa-coffee"></i></div>
+					<div class="plan">Free</div>
+					<div class="price">$0</div>
+					<div class="description">
+						Single License<br>
+						One Website<br>
+						Basic Support
+					</div>
+					<button>Sign up</button>
+				</div>
+			</div>
+
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+				<div class="price-block">
+					<div class="inline-block"><i class="fa fa-calendar"></i></div>
+					<div class="plan">Extended</div>
+					<div class="price">$24</div>
+					<div class="description">
+						Multiple Licenses<br>
+						Unlimited Websites<br>
+						Great Support
+					</div>
+					<button>Sign up</button>
+				</div>
+			</div>
+
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-left">
+				<div class="price-block inverted">
+					<div class="inline-block"><i class="fa fa-cutlery"></i></div>
+					<div class="plan">Pro</div>
+					<div class="price">$50</div>
+					<div class="description">
+						Extended Licenses<br>
+						Unlimited Websites<br>
+						Premium Support
+					</div>
+					<button>Sign up</button>
+				</div>
+			</div>
+		</div><!-- end pricing-container -->
+
+		<div class="testimonials-container text-center">
+			<h2 class="larger hidden-xs">testimonials</h2>
+			<h3 class="larger visible-xs">testimonials</h2>
+			<p>See why WDW travelers love our tools.</p>
+
+			<div class="wrapper closed">
+				<div class="testimonial yellow">
+					<i class="fa fa-quote-right"></i>
+					<div class="testimonial-content">
+						<p>I’m so impressed with your system. I am a WDW veteran and was skeptical at first, but that disappeared with one little text. You’ve made our upcoming trip that much more magical!</p>	
+					</div>
+				</div>
+				<div class="name">Madison</div>
+				<div class="from">From Georgia</div>
+			</div>
+
+			<div class="wrapper">
+				<div class="testimonial">
+					<i class="fa fa-quote-right"></i>
+					<div class="testimonial-content">
+						<p>I’m so impressed with your system. I am a WDW veteran and was skeptical at first, but that disappeared with one little text. You’ve made our upcoming trip that much more magical!</p>	
+					</div>
+				</div>
+				<div class="name">Dave</div>
+				<div class="from">From Oklahoma</div>
+			</div>
+			
+			<div class="wrapper closed">
+				<div class="testimonial green">
+					<i class="fa fa-quote-right"></i>
+					<div class="testimonial-content">
+						<p>I’m so impressed with your system. I am a WDW veteran and was skeptical at first, but that disappeared with one little text. You’ve made our upcoming trip that much more magical!</p>	
+					</div>
+				</div>
+				<div class="name">Billy</div>
+				<div class="from">From Florida</div>
+			</div>
+
+
+		</div><!-- end testimonials-container -->

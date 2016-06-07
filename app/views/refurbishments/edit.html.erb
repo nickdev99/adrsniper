@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-10 col-md-offset-1 col-xs-12" style="margin-top:7em">
+
+<%= form_for @refurbishment, :html => { :class => 'form-horizontal', 'role' => 'form' } do |f| %>
+
+  <div class="form-group">
+    <%= f.label :restaurant_id, :class => 'control-label' %>
+        <%= f.collection_select :restaurant_id, Restaurant.order('name ASC'), :id, :name, {}, :class => 'dropdown form-control' %>
+  </div>
+
+  <div class="form-group">
+      <%= f.label :start_date, "Refurbishments occurring a from:", :class => 'control-label' %>
+          <%= f.text_field :start_date, :class => 'text_field jqdp form-control', :required => true %>
+  </div>
+
+  <div class="form-group">
+      <%= f.label :end_date, "through:", :class => 'control-label' %>
+          <%= f.text_field :end_date, :class => 'text_field jqdp form-control', :required => true %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+
+  </div>
+<% end %>
+
+</div>
+</div>
+</div>

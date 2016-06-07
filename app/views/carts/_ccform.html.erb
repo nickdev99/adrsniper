@@ -1,0 +1,70 @@
+      <div class="form-group">
+        <label class="col-sm-3 control-label" for="name_on_card">Name on Card</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" name="name_on_card" id="card-holder-name" placeholder="Card Holder's Name" value="<%= params[:name_on_card] %>">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-3 control-label" for="card-number">Card Number</label>
+        <div class="col-sm-9">
+          <input type="text" style="width: auto ! important" class="form-control" name="cc_num" id="card-number" placeholder="Card Number" size="16" value="<%= params[:cc_num] %>">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-3 control-label" for="expiry-month">Expiration Date</label>
+        <div class="col-sm-9">
+          <div class="row">
+            <div class="col-xs-2">
+              <select class="form-control col-sm-2" name="exp_month" id="expiry-month">
+                <option>Month</option>
+                <option value="01" <%= if params[:exp_month] == "01" then 'selected="selected"' else "" end %>>Jan (01)</option>
+                <option value="02" <%= if params[:exp_month] == "02" then 'selected="selected"' else "" end %>>Feb (02)</option>
+                <option value="03" <%= if params[:exp_month] == "03" then 'selected="selected"' else "" end %>>Mar (03)</option>
+                <option value="04" <%= if params[:exp_month] == "04" then 'selected="selected"' else "" end %>>Apr (04)</option>
+                <option value="05" <%= if params[:exp_month] == "05" then 'selected="selected"' else "" end %>>May (05)</option>
+                <option value="06" <%= if params[:exp_month] == "06" then 'selected="selected"' else "" end %>>June (06)</option>
+                <option value="07" <%= if params[:exp_month] == "07" then 'selected="selected"' else "" end %>>July (07)</option>
+                <option value="08" <%= if params[:exp_month] == "08" then 'selected="selected"' else "" end %>>Aug (08)</option>
+                <option value="09" <%= if params[:exp_month] == "09" then 'selected="selected"' else "" end %>>Sep (09)</option>
+                <option value="10" <%= if params[:exp_month] == "10" then 'selected="selected"' else "" end %>>Oct (10)</option>
+                <option value="11" <%= if params[:exp_month] == "11" then 'selected="selected"' else "" end %>>Nov (11)</option>
+                <option value="12" <%= if params[:exp_month] == "12" then 'selected="selected"' else "" end %>>Dec (12)</option>
+              </select>
+            </div>
+            <div class="col-xs-2">
+              <select class="form-control" name="exp_year">
+                <option value="14" <%= if params[:exp_year] == "14" then 'selected="selected"' else "" end %>>2014</option>
+                <option value="15" <%= if params[:exp_year] == "15" then 'selected="selected"' else "" end %>>2015</option>
+                <option value="16" <%= if params[:exp_year] == "16" then 'selected="selected"' else "" end %>>2016</option>
+                <option value="17" <%= if params[:exp_year] == "17" then 'selected="selected"' else "" end %>>2017</option>
+                <option value="18" <%= if params[:exp_year] == "18" then 'selected="selected"' else "" end %>>2018</option>
+                <option value="19" <%= if params[:exp_year] == "19" then 'selected="selected"' else "" end %>>2019</option>
+                <option value="20" <%= if params[:exp_year] == "20" then 'selected="selected"' else "" end %>>2020</option>
+                <option value="21" <%= if params[:exp_year] == "21" then 'selected="selected"' else "" end %>>2021</option>
+                <option value="22" <%= if params[:exp_year] == "22" then 'selected="selected"' else "" end %>>2022</option>
+                <option value="23" <%= if params[:exp_year] == "23" then 'selected="selected"' else "" end %>>2023</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-3 control-label" for="cvv">Security Code</label>
+        <div class="col-sm-9">
+          <input type="text" style="width: auto ! important" class="form-control" id="cvv" placeholder="CVV" size="3" name="csc" value="<%= params[:csc] %>">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-3 control-label" for="cvv">Zip Code</label>
+        <div class="col-sm-9">
+          <input type="text" style="width: auto ! important" class="form-control" id="zip" placeholder="Zip" size="6" name="card_billing_zip" value="<%= params[:card_billing_zip] %>">
+        </div>
+      </div>
+      <div class="form-group">
+            <label class="col-sm-8 control-label" for="expiry-month"><input type="checkbox" name="save_this_card" checked="checked" />&nbsp; Save this card? This will replace your current card, if you have one.</label>
+      </div>
+     <!--- <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-9">
+          <input type="submit" class="btn btn-success" value="Pay Now" />
+        </div>
+      </div> -->

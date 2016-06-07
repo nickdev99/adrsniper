@@ -1,0 +1,77 @@
+﻿body {
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 1.5em;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.navbar-inverse {
+    background-color: #385fc7;
+}
+
+.navbar-nav > li > a {
+    color: white !important;
+}
+
+#logo-box { 
+    background-color: white; 
+    z-index: 1031;
+    top: 0; 
+    position: absolute; 
+    left: 10%; width: 20%; 
+    height: 16%;
+    text-align: center;
+}
+
+#logo-img { 
+    max-height: 94%; 
+    max-width: 94%;
+}
+
+.img-overlay {
+    text-align: center;
+}
+
+.carousel-inner {
+    background-color: #aaa;
+}
+
+.carousel-inner img {
+    margin: 0 auto 0 auto;
+}

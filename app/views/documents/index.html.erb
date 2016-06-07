@@ -1,0 +1,9 @@
+<div class="container">
+<div class="row" style="margin-top: 8em;">
+    <span style="font-size: 1.8em;"><%= link_to('See Previously Generated Documents', action: 'show_gen', controller: 'documents') %></span>
+    <h1>Root Docs</h1>
+    <% @rootdocs.each do |rd| %>
+        <h2> <%= link_to(rd.name, controller: 'documents', action: 'show_root', rootdoc_id: rd.id) %> </h2>
+    <% end %>
+</div>
+</div>

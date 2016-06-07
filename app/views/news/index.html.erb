@@ -1,0 +1,41 @@
+<%- title "Walt Disney World News" %>
+<div class="news-layout" id="news-container">
+    <%= render :partial => 'layouts/header' %>
+
+	<div class="page-wrapper">
+		<div class="banner">
+			<div class="col-lg-6 col-md-6 col-sm-6 sol-xs-9">
+				<h1>insider information on wdw news and updates</h1>
+			</div>
+		</div>
+
+		<div class="wdw-container">
+			<div class="text-center">
+				<h3 class="visible-xs-inline-block">latest wdw news</h3>
+			</div>
+            <% cur_index = 0 %>
+            <% @news[cur_index, 6].each_with_index do |n, index| %>
+                <%= render :partial => "layouts/news_item", locals: {n: n} %>
+                <% cur_index = index %>
+            <% end %>
+		</div><!-- end wdw-container -->
+
+		<div class="free-trial-banner">
+			<div class="container">	
+				<div class="col-lg-7 col-md-7 col-sm-6 col-xs-12 text-container">
+					<div class="title-arc arc-text" data-radius="330">Give Yourself The</div>
+					<div class="title">most magical<br> dining experience</div>
+					<button class="red-button large"><span>Start Free Trial</span></button>
+				</div>
+			</div>
+		</div><!-- end free-trial-banner -->
+
+		<div class="wdw-container">
+            <% @news[cur_index+1, 6].each_with_index do |n, index| %>
+                <%= render :partial => "layouts/news_item", locals: {n: n} %>
+                <% cur_index = index %>
+            <% end %>
+			<div class="text-center">
+				<button class="visible-xs-inline-block red-small-button">Load More</button>
+			</div>
+		</div><!-- end wdw-container -->

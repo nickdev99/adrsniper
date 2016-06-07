@@ -1,0 +1,17 @@
+<table class="table table-bordered">
+    <tr>
+        <th>Name</th>
+        <th>Brand</th>
+        <th>Last Four</th>
+        <th>Expiration</th>
+    </tr>
+    <% @cards.each do |c| %>
+        <tr>
+            <td><%= c.name %></td>
+            <td><%= c.brand %></td>
+            <td> <%= c.last_four %></td>
+            <td><%= c.expiration_month %>/<%= c.expiration_year %></td>
+        </tr>
+    <% end %>
+</table>
+

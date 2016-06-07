@@ -1,0 +1,10 @@
+
+
+crt_invitation:
+  id: 1
+  code: 1G23F
+  owner_id: 1
+  redeemer_id: 2
+  redeemed_timestamp: 1900-01-01 00:00:00
+  sent_timestamp: 1900-01-01 00:00:01
+  dest_email: Bob@builder.co

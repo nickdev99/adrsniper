@@ -1,0 +1,83 @@
+<%- title "Watches" %>
+<div class="search-layout" id="search-container">
+
+    <%= render :partial => 'layouts/header' %>
+
+    <%# render :partial => 'layouts/search_box' %>
+	<div class="page-wrapper">
+		<div class="banner" style="background-color: #e64c3c ! important;">
+			<h2 class="white text-center hidden-xs">Current Watches</h2>
+			<h3 class="white text-center visible-xs">Current Watches</h3>
+		</div>
+
+		<div class="result-container container clearfix">
+
+            <%= render :partial => 'layouts/search_box', locals: {show_filters: false} %>
+			<!-- end affix -->
+			<div class="pull-left">
+				<div class="content">
+				
+					<div class="v-center badges-wrapper">
+						<div class="information inverted col-sm-6 col-xs-12 v-center">
+							<div class="col-xs-5 text-center">
+								<div class="inline-block">
+									<div class="info-badge">
+                                        <div class="number"><%= @max_watched_days - @user.count_active_days %></div>
+										<div class="text">DAYS</div>
+									</div>
+								</div>
+							</div>
+							<div class="description col-xs-7">watchable days remaining. Want more?</div>
+						</div>
+					</div><!-- end badges-wrapper -->
+
+                    <% current_user.watches.each do |watch| %>
+                            <% rest = watch.restaurant %>
+                            <div class="result v-center">
+                                <div class="col-xs-12 col-md-5 col-sm-5 img-wrapper" style="background-image: url('<%= image_url "rest_banners/#{rest.img_name}" %>')">
+                                    <%= image_tag "search_shim.png", class: "search-shim img-responsive" %>
+                                </div>
+                                <div class="col-xs-12 col-md-7 col-sm-7 wrapper">
+                                    <div class="body">
+                                        <div class="title"><%= rest.name %></div>
+                                        <% if watch.title.present? %>
+                                            <div class="title">"<%= watch.title %>"</div>
+                                        <% end %>
+                                        <%#<div class="option">
+                                            <div><i class="fa fa-cutlery yellow"></i></div>
+                                            <span>Unique/Themed Dining</span>
+                                        </div>
+                                        <div class="option">
+                                            <div><i class="fa fa-flag red"></i></div>
+                                            <span>American Cuisine</span>
+                                        </div>
+                                        <div class="option">
+                                            <div><i class="fa fa-map-marker green"></i></div>
+                                            <span><%= "Location Coming Soon" %  ></span>
+                                        </div> %>
+                                                <div class="option">
+                                                <span>At EVENT_HOST</span>
+                                                </div>
+                                                <div class="option">
+                                                    <span><i class="fa fa-cutlery" style="margin-right:2px;"></i> <b><%= watch.search_time.name  %></b> for <b><%= watch.party_size %></b></span>
+                                                </div>
+                                                <div class="option">
+                                                    <span><i class="fa fa-calendar-o" style="margin-right:2px;"></i> <%= watch.search_start_date  %> <% if watch.search_start_date != watch.search_end_date %>&mdash; <%= watch.search_end_date %>  <% end %></span>
+                                                </div>
+                                    </div>
+                                    <div class="footer clearfix v-center">
+                                        <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+                                            <%= render partial: 'layouts/venue_badges', locals: {rest: rest, event: false, stid: watch.search_time_id } %>
+                                        </div>
+                                        <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12 text-right buttons">							
+                                            <a href="<%= edit_watch_path(watch) %>"><i class="fa fa-edit"></i> Edit</a><br />
+                                            <a href="<%= url_for(controller: :venues, action: :show_info, slug: rest.slug) %>"><i class="fa fa-trash-o"></i> Remove</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- end result -->
+                        <% end %>
+
+				</div><!-- end content -->
+			</div><!-- end move-to-left -->
+		</div><!-- end result-container -->

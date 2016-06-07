@@ -1,0 +1,145 @@
+<% @links.each do |ok, ov| %>
+    <% rest = Venue.lookup(ok); if rest.nil? then next end %>
+    <% if @area_id and rest.respond_to? "area_id" and rest.area_id != @area_id then next end %>
+    <div class="result v-center">
+      <div class="col-xs-12 col-md-5 col-sm-5 img-wrapper" style="background-image: url('<%= image_url "rest_banners/#{rest.img_name}" %>')">
+        <%# image_tag "rest_banners/#{rest.img_name}", class: "search-shim img-responsive" #%>
+        <%= image_tag "search_shim.png", class: "search-shim img-responsive" %>
+      </div>
+      <div class="col-xs-12 col-md-7 col-sm-7 wrapper">
+        <div class="body">
+          <div class="title"><%= rest.name %></div>
+          <%#<div class="option">
+                                            <div><i class="fa fa-cutlery yellow"></i></div>
+                                            <span>Unique/Themed Dining</span>
+                                        </div>
+                                        <div class="option">
+                                            <div><i class="fa fa-flag red"></i></div>
+                                            <span>American Cuisine</span>
+                                        </div>
+                                        <div class="option">
+                                            <div><i class="fa fa-map-marker green"></i></div>
+                                            <span><%= "Location Coming Soon" %  ></span>
+                                        </div> %>
+          <% ov.each do |k, v| %>
+              <% off_dates = [] %>
+              <% if k != ok %>
+                  <div class="option">
+                    <% host = Venue.lookup(k) %>
+                    <span>At <%= host.name %></span>
+                  </div>
+              <% end %>
+              <% v.keys.each do |off_datestamp| %>
+                  <% off_date = Chronic.parse off_datestamp; if off_date.nil? then next end  %>
+                  <% off_dates << [off_date, off_datestamp]; %>
+              <% end %>
+              <% off_dates.sort! %>
+              <% off_dates.each do |off_date, off_datestamp| %>
+                  <% off_times = [] %>
+                  <div class="option">
+                    <span><i class="fa fa-calendar-o" style="margin-right:2px;"></i> <%= off_datestamp %></span>
+                    <div class="times_list">
+                      <ul>
+                        <% v[off_datestamp].keys.each do |off_timestamp| %>
+                            <% off_time = Chronic.parse off_timestamp; if off_time.nil? then next end  %>
+                            <% off_times << [off_time, off_timestamp]; %>
+                        <% end %>
+                        <% off_times.sort! %>
+                        <% off_times.each do |off_time, off_timestamp| %>
+                            <li class="img-rounded"><a href="<%= v[off_datestamp][off_timestamp]['booking_url'] %>"><i class="fa fa-clock-o"></i><%= off_time.strftime("%l:%M %p") %></a></li>
+                        <% end %>
+                    </div>
+                  </div>
+              <% end %>
+          <% end %>
+        </div>
+        <div class="footer clearfix v-center">
+          <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+            <% event = false %>
+            <% stid =  @search_time_id %>
+            <% if !rest.venues_meta.nil? %>
+                <% if !event %>
+                    <% vm = rest.venues_meta.where("search_time_id = ? AND event_id IS NULL", stid)  %>
+                <% else %>
+                    <% vm = rest.venues_meta.where("event_id = ?", event_id) %>
+                <% end %>
+            <% end %>
+
+            <% if !vm.nil? then vm = vm[0] end %>
+            <% if !vm.nil? %>
+                <% if vm.high_contention_adr %>
+                    <div class="icon" data-toggle="tooltip" data-placement="top" title="Hard to Get Reservation - Use ADR Sniper">
+                      <i class="fa fa-tachometer" style="background-color: #831434"></i>
+                    </div>
+                <% end %>
+                <% if vm.has_characters and !vm.has_core_characters and !vm.has_royal_characcters and !vm.has_junior_characters %>
+                    <div class="icon" data-toggle="tooltip" data-placement="top" title="Characters">
+                      <i class="fa fa-users"></i>
+                    </div>
+                <% end %>
+                <% if vm.has_core_characters %>
+                    <div class="icon" data-toggle="tooltip" data-placement="top" title="1 or More Core Characters - MMDDGP">
+                      <i class="fa fa-key"></i>
+                    </div>
+                <% end %>
+                <% if vm.has_royal_characcters %>
+                    <div class="icon" data-toggle="tooltip" data-placement="top" title="Royal Characters">
+                      <i class="fo fo-crown"></i>
+                    </div>
+                <% end %>
+                <% if vm.has_junior_characters %>
+                    <div class="icon" data-toggle="tooltip" data-placement="top" title="Disney Junior Characters">
+                      <i class="fa fa-child"></i>
+                    </div>
+                <% end %>
+                <% if vm.has_fireworks %>
+                    <div class="icon" data-toggle="tooltip" data-placement="top" title="Fireworks May Be Visible">
+                      <i class="fa fa-asterisk"></i>
+                    </div>
+                <% end %>
+                <% if vm.has_parade %>
+                    <div class="icon" data-toggle="tooltip" data-placement="top" title="Parade May Be Visible">
+                      <i class="fa fa-ellipsis-v"></i>
+                    </div>
+                <% end %>
+                <% if vm.has_animals %>
+                    <div class="icon" data-toggle="tooltip" data-placement="top" title="Animals May Be Visible">
+                      <i class="fa fa-paw"></i>
+                    </div>
+                <% end %>
+                <% if vm.has_alcohol %>
+                    <div class="icon" data-toggle="tooltip" data-placement="top" title="Alcohol">
+                      <i class="fa fa-glass"></i>
+                    </div>
+                <% end %>
+                <% if vm.has_photo_package %>
+                    <div class="icon" data-toggle="tooltip" data-placement="top" title="Optional Photo Package">
+                      <i class="fa fa-camera"></i>
+                    </div>
+                <% end %>
+                <% if vm.has_tiw_discount %>
+                    <div class="icon" data-toggle="tooltip" data-placement="top" title="Tables in Wonderland">
+                      <i class="fa fa-tiw" style="background-color: #1d9f9b;"></i>
+                    </div>
+                <% end %>
+                <% if vm.has_ap_discount %>
+                    <div class="icon" data-toggle="tooltip" data-placement="top" title="Annual Passholder Discount">
+                      <i class="fa fa-apd" style="background-color: #1d9f9b;"></i>
+                    </div>
+                <% end %>
+                <% if vm.has_dvc_discount %>
+                    <div class="icon" data-toggle="tooltip" data-placement="top" title="Disney Vacation Club Discount">
+                      <i class="fa fa-dvc" style="background-color: #1d9f9b;"></i>
+                    </div>
+                <% end %>
+            <% end %>
+          </div>
+          <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12 text-right buttons">
+            <a href="<%= url_for(action: :show_info, slug: rest.slug) %>">Details</a>
+            <span class="delimiter">|</span>
+            <a href="#">Watch</a>
+          </div>
+        </div>
+      </div>
+    </div><!-- end result -->
+<% end %>

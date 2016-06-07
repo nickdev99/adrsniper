@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="row" style="margin-top:8em;">
+        <div class="page-header">
+            <h1>Checkout</h1>
+        </div>
+        <%= bootstrap_flash %>
+<p>You are about to buy:<br />
+<%= render 'cart_contents' %>
+</p>
+<p>If this does not look right, please turn back now.</p>
+
+<%= form_tag("/carts/checkout_pay", {:class => "form-horizontal"}) do %>
+    <fieldset>
+        <legend>Payment Method</legend>
+        <% if @cards.present? %>
+            <p><input type="radio" id="use_saved" name="use_what" checked="checked" value="saved" /> Use Saved Card</p>
+            <div id="saved_card_cont">
+                <%= render 'saved_card' %>
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-9">
+                        <%= submit_tag("Pay Now", {:class => "btn btn-success"}) %>
+                    </div>
+                </div>
+            </div>
+            <p><input type="radio" id="use_new" name="use_what" value="new" /> Use New Card</p>
+            <div id="new_card_cont" style="display: none;">
+        <% else %>
+            <input type="hidden" name="use_what" value="new" />
+            <div id="new_card_cont"></div>
+        <% end %>
+        <%= render 'ccform' %>
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-9">
+                <%= submit_tag("Pay Now", {:class => "btn btn-success"}) %>
+            </div>
+        </div>
+    </fieldset>
+<% end %>
+</div>

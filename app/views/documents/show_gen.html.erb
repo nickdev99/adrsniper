@@ -1,0 +1,22 @@
+<div class="container">
+<div class="row" style="margin-top:10em;">
+<% @rootdocs.each do |rd| %>
+    <h2><%= rd.name %></h2>
+    <% @gendocs.each do |gd| %>
+        <% if gd.root_document_id == rd.id %>
+            <h4><%= gd.title %></h4>
+            <div class="gendoc_controls" style="margin-left:20px;">
+                <%= link_to({action: :download_gen, controller: :documents, gendoc_id: gd.id}, {'data-no-turbolink' => true}) do %>
+                    <i class="glyphicon glyphicon-circle-arrow-down"></i> Save
+                <% end %>
+                <br />
+                <%= link_to({:action => "destroy", :controller => "documents", :gendoc_id => gd.id}, {:method => :delete, :data => { :confirm => "Are you sure?" }}) do %>
+                    <i class="glyphicon glyphicon-remove-sign"></i> Remove
+                <% end %>
+            </div>
+            <br />
+        <% end %>
+    <% end %>
+<% end %>
+</div>
+</div>

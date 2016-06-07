@@ -1,0 +1,74 @@
+
+<div id="past_adr_date_warning" class="alert fade in alert-success" style="display: none">Some dates in your search are more than 180 days out and are therefore not yet available for reservation. We will automatically begin searching on those dates as soon as reservations become available.</div>
+
+<%= form_for @event_watch, :remote => true, :html => { :class => 'form-horizontal', 'role' => 'form' } do |f| %>
+
+  <div class="form-group">
+      <label>Event</label>
+      <% if @sticky and @event_watch.event_id.present? %>
+          <p><i>This field has already been set. Only elite members can modify this field.</i></p>
+          <%= f.collection_select :event_id, Event.all, :id, :name, {}, :class => 'dropdown form-control', :disabled => true %>
+      <% else %>
+        <%= f.collection_select :event_id, Event.all, :id, :name, {}, :class => 'dropdown form-control' %>
+      <% end %>
+  </div>
+
+  <div class="form-group">
+      <p>You can watch <b><%= (@max_watched_days - @user.count_active_days) %></b> more days.</p>
+      <p>Show available times between</p>
+      <%= text_field_tag "search_start_date", nil, :class => 'text_field jqdp form-control' %><br />
+      and<br />
+      <%= text_field_tag "search_end_date", nil, :class => 'text_field jqdp form-control' %>
+  </div>
+<% end %>
+
+  <button id="event-timestamps-button">Get Timestamps</button>
+
+  <div class="form-group" id="event-timestamps-holder">
+      <input type="checkbox" id="event-timestamp-checkbox-placeholder" value="event-timestamp-value" /> <span id="event-timestamp-text-placeholder">xxx</span>
+  </div>
+
+<%= form_for @event_watch, :remote => true, :html => { :class => 'form-horizontal', 'role' => 'form' } do |f| %>
+
+  <div class="form-group">
+    <%= f.label :party_size, :class => 'control-label' %>
+    <%= f.text_field :party_size, :class => 'text_field input-mini form-control', :maxlength => 2 %>
+  </div>
+
+  <div class="form-group">
+    <p>If you'd like, you can give this watch a special title (like "Alice and Bob's Dinner" or "Carol and Dan's Breakfast").</p>
+    <%= f.label :title, :class => 'control-label' do %>Title <i>(optional)</i><% end %>
+    <%= f.text_field :title, :class => 'text_field form-control'%>
+  </div>
+
+  <div class="form-group">
+      <label class="control-label" for="date_notify_range"><span style="font-style:italic">(optional)</span></label>
+      <p id="mark_dates_first">Please specify a search and end date before proceeding.</p>
+      <p id="dates_marked">Looking for something specific? Input desired reservation times here and you will only receive notifications for those times.
+      <br />
+      <button type="button" id="new_notify_range" class="btn btn-success">
+          <i class="glyphicon glyphicon-plus-sign"></i> Add Time Range
+      </button>
+      </p>
+     <input type="hidden" id="npj" value="<%= @event_watch.notify_prefs %>" />
+      <div id="date_notify_holder"></div>
+      <div id="date_notify_template" class="date_notify_range" style="display: none; margin: 6px 0 6px 0;">
+        <select id="date_notify_template_date_dropdown" class="bs-date-dropdown input-mid form-control"></select>&nbsp; from &nbsp;
+        <div class="input-append"><input type="text" class="input-small timepicker" id="date_notify_template_timepicker_start" /><span class="add-on"><i class="glyphicon glyphicon-time"></i></span></div>
+        &nbsp; until &nbsp;
+        <div class="input-append"><input type="text" class="input-small timepicker" id="date_notify_template_timepicker_end" /><span class="add-on"><i class="glyphicon glyphicon-time"></i></span></div>
+        &nbsp;
+      <button type="button" id="date_notify_template_remove_button" class="btn btn-danger remove_notify_range" data-range-id="">
+          <i class="glyphicon glyphicon-minus-sign"></i> Remove This Range
+      </button>
+      <p id="date_notify_template_not_long_enough_msg" style="display: none;">You must specify a range of at least 30 minutes.</p>
+      </div>
+  </div>
+
+
+  <div class="form-group">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                watches_path, :class => 'btn' %>
+  </div>
+<% end %>

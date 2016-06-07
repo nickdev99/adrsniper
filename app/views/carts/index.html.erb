@@ -1,0 +1,40 @@
+<div class="container">
+<div class="row" style="margin-top:11em;">
+    <%= render 'cart_contents' %>
+    <br />
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-10 col-md-offset-1 col-xs-12">
+                <table class="table table-hover">
+                    <tr>
+                        <td class="text-left"><%= form_tag('/carts/add_group_code') do %>
+                            Group Code:
+                            <input type="text" name="group_code" /><br />
+                        </td>
+                        <td class="col-sm-1 col-md-1">
+                            <br class="visible-xs" />
+                            <input type="submit" value="Apply Group Code" /><br />
+                        <% end %>
+                        </td>
+                        <td>   </td>
+                        <td>   </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="/watches" class="btn btn-default">
+                                <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping </a>
+                            </button></td>
+                            <td class="col-sm-1 col-md-1"> </td>
+                            <td class="col-sm-1 col-md-1"> </td>
+                            <td class="col-sm-1 col-md-1">
+                                <a href="/carts/checkout" class="btn btn-success">
+                                    Checkout <span class="glyphicon glyphicon-play"></span></a>
+                                </button>
+                            </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

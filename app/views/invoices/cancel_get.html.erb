@@ -1,0 +1,12 @@
+<p>Before you cancel, remember:
+<ul>
+    <li>You will not be able to use any tools from WDWTools anymore</li>
+    <li>Your account will continue to exist, but cannot be reactivated without another valid invitation code from a currently-subscribed member</li>
+</ul>
+</p>
+<a class="btn btn-success btn-large" href=<%= root_url  %>> <i class="glyphicon glyphicon-ok-circle"></i> I want to keep my membership!</a><br />
+<br />
+<%= form_tag(invoices_cancel_sub_path) do %>
+    <input type="hidden" value="yes_really" name="really_cancel" />
+    <button type="submit" class="btn btn-danger btn-mini" data-confirm="Do you REALLY want to cancel?" > <i class="glyphicon glyphicon-thumbs-down"></i> I understand, and I want to cancel anyway</button><br />
+<% end %>

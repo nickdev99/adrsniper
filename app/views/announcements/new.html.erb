@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-10 col-md-offset-1 col-xs-12" style="margin-top:7em">
+
+<%= form_for @announcement, :html => { :class => 'form-horizontal', 'role' => 'form' } do |f| %>
+
+  <div class="form-group">
+  <h1> New Announcement </h1>
+    <%= f.label :tilte, :class => 'control-label' %>
+          <%= f.text_field :title, :class => 'text_field jqdp form-control', :required => true %>  </div>
+
+  <div class="form-group">
+      <%= f.label :text, "Announcement text:", :class => 'control-label' %>
+          <%= f.text_field :text, :class => 'text_field jqdp form-control', :required => true %>
+  </div>
+
+  <div class="form-group">
+      <%= f.label :elite_only, "Elite Only?", :class => 'control-label' %>
+          <%= f.check_box :elite_only, :class => 'text_field jqdp form-control' %>
+  </div>
+
+  <div class="form-group">
+      <%= f.label :non_elite_only, "Non-Elite Only?", :class => 'control-label' %>
+          <%= f.check_box :non_elite_only, :class => 'text_field jqdp form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+
+  </div>
+<% end %>
+
+</div>
+</div>
+</div>

@@ -1,0 +1,10 @@
+<div class="container">
+<div class="row" style="margin-top: 8em;">
+    <h1><%= @doc.name %></h1>
+    <%= @doc.description %>
+    Page 1 Image:
+    <%= image_tag @doc.preview_image_name %>
+    <br />
+    <span style="font-size: 1.8em;"><%= link_to('Get Full Document', rootdoc_id: @doc.id, action: 'new', controller: 'documents') %></span>
+</div>
+</div>

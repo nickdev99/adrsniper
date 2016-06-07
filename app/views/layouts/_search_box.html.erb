@@ -1,0 +1,100 @@
+			<div class="pull-right" id="affix">
+				<div class="row sidebar">
+
+					<!-- possible to experement with col-sm-12, changin it to col-sm-6 in both blocks -->
+					<div class="col-xs-12 col-sm-12 col-md-12">
+
+                      <div id="load">
+                        <img src="/assets/spin.gif" />
+                      </div>
+
+                        <%= form_tag "/dine-search", class: "search-box", method: "get", id: "dine-form" do %>
+                        <%#<form class="search-box" action="search.html">%>
+	<div class="wrapper">
+		<h3>SEARCH for openings</h3>
+
+		<select class="selectpicker longinput" name="area" id="area">
+            <option style="display: none" selected disabled>Location</option>
+            <optgroup label="Parks">
+                <% Area.where("area_type = ?", "Parks").order(:id).each do |area| %>
+                    <option value="<%= area.name %>" <%= if @area_id and @area_id == area.id then raw "selected=\"selected\"" end %>><%= area.name %></option>
+                <% end %>
+            </optgroup>
+            <optgroup label="Other">
+                <% Area.where("area_type != ?", "Parks").order(:name).each do |area| %>
+                    <option value="<%= area.name %>" <%= if @area_id and @area_id == area.id then raw "selected=\"selected\"" end %>><%= area.name %></option>
+                <% end %>
+            </optgroup>
+		</select>
+
+		<div class="clearfix">
+            <input class="datepicker shortinput pull-left" placeholder="Date Range" value="<%= params[:date_range_start] %>" name="date_range_start" class="datepicker" id="date_range_start">
+			<span class="delimiter">–</span>
+			<input class="datepicker shortinput pull-right" placeholder="End" value="<%= params[:date_range_end] %>" name="date_range_end" class="datepicker" id="date_range_end">
+		</div>
+
+		<div class="clearfix">
+			<select class="selectpicker shortinput pull-left" name="meal_time" id="meal_time">
+				<option style="display: none" selected disabled>Time</option>
+                <optgroup label="Meals">
+                    <% ['Breakfast', 'Brunch', 'Lunch', 'Dinner'].each do |v| %>
+                        <option value="<%= v %>" <%= if v == params[:meal_time] then raw "selected=\"selected\"" end %>><%= v %></option>
+                    <% end %>
+                </optgroup>
+                <optgroup label="Ideal Time (+/- 2 hours)">
+                    <% t = Chronic.parse("6:30 AM"); t_end = Chronic.parse ("10:30 PM"); %>
+                    <% while t <= t_end %>
+                        <option value="<%= t.strftime("%l:%M %p") %>" <%= if t == params[:meal_time] then raw "selected=\"selected\"" end %>><%= t.strftime("%l:%M %p") %></option>
+                        <% t = t + 30.minutes  %>
+                    <% end %>
+                </optgroup>
+			</select>
+			<select class="selectpicker shortinput pull-right" name="party_size" id="party_size">
+				<option style="display: none" selected disabled>Party Size</option>
+                <% (1..20).each do |n| %>
+                    <option value="<%= n %>" <%= if n.to_s == params[:party_size] then raw "selected=\"selected\"" end %>><%= n %></option>
+                <% end %>
+			</select>
+		</div>
+
+		<a class="toggle-restaurant-input" href="#">Specify Restaurant</a>
+		<input class="restaurant-input longinput" name="specific_restaurant" data-autocomplete="venues/autocomplete_restaurant_name" disabled placeholder="Enter Restaurant Name...">
+	</div>
+
+	<input type="submit" id="dine_search" class="submit-button" value="Submit" />
+<% end %>
+					</div>
+                    <% if show_filters %>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <form class="search-box filter-results" action="">
+                                <div class="wrapper">
+                                    <h3>Filter Results</h3>
+                                    <select class="selectpicker longinput">
+                                        <option style="display: none" selected disabled>Dining Experience</option>
+                                        <option>5 stars</option>
+                                        <option>4 stars</option>
+                                    </select>
+                                    <select class="selectpicker longinput">
+                                        <option style="display: none" selected disabled>Price Range</option>
+                                        <option>Over 50$</option>
+                                        <option>Below 50$</option>
+                                    </select>
+                                    <select class="selectpicker longinput">
+                                        <option style="display: none" selected disabled>Cuisine</option>
+                                        <option>American</option>
+                                        <option>Italian</option>
+                                        <option>African</option>
+                                    </select>
+                                    <select class="selectpicker longinput">
+                                        <option style="display: none" selected disabled>Guest Rating</option>
+                                        <option>5</option>
+                                        <option>4</option>
+                                        <option>3</option>
+                                    </select>
+
+                                </div>
+                            </form>
+                        </div>
+                    <% end %>
+				</div>
+			</div><!-- end affix -->

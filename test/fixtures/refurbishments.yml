@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+crt_refurb:
+  id: 1
+  start_date: 2014-10-29
+  end_date: 2014-10-29
+  restaurant_id: "16"
+
+two:
+  id: 2
+  start_date: 2014-10-29
+  end_date: 2014-10-29
+  restaurant_id: 

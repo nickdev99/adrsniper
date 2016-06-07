@@ -1,0 +1,79 @@
+<div class="container">
+<div class="row" style="margin-top: 10em">
+    <h2>Terms</h2>
+    <p>All rights are reserved. External distribution of this document, except by travel agents to their clients, is prohibited by international copyright law. Visual tracking information has been embedded into all documents and will be used to identify the source of leaked documents. Leakers will have their accounts suspended without refund or warning. Any rights to use any WDWTools service are automatically forfeited by leakers and no refund will be issued. Civil and/or criminal penalties may also be pursued.</p>
+    <br />
+    <input type="checkbox" name="terms_accepted" id="terms_accepted"> I accept these terms.<br />
+    <span style="color: red;">This box must be checked to continue.</span><br />
+    <div id="pending_acceptance">
+        <h2>Download</h2>
+        <p>At the current time, this document is available in PDF format only. You will be able to print this document from your PDF viewer.</p>
+        <br />
+        <%= form_tag({action: :download_stock}, {:rootdoc_id => @rootdoc.id, :method => :get}) do %>
+            <%= submit_tag("Download without Customizations") %>
+        <% end %>
+
+        <h2>Customize?</h2>
+        <p>At your option, you may customize the manifest stamped on the first page. Here is an example of a customized manifest:<br />
+        <%= image_tag("example_stamp.png") %>
+        </p>
+        <%= form_tag({:action => :post_agent_image}, {:multipart => true}) do %>
+            <h3>Add Own Image</h3>
+            <p>You may use your own logo or picture of file type JPG or PNG for the stamp. File size should not exceed 1 megabyte.</p>
+            <%= file_field_tag 'uploaded_data' %>
+            <%= check_box_tag(:image_copyright_certification, nil, :checked => true) %>
+            <%= label_tag(:image_copyright_certification, "I certify that I am legally entitled to use this image for this purpose.") %><br />
+            <%= submit_tag("Upload Custom Image") %>
+        <% end %>
+        <br />
+        <%= form_tag({action: :generate}) do %>
+            <p>Please choose an image to be stamped on the first page. You may provide your own logo or image using the upload form below.</p>
+            <table>
+                <tr>
+                    <% @agent_images.each do |ai| %>
+                        <% if ai.id == 1 %>
+                            <th style="text-align:center;"> <%= radio_button_tag(:agent_image, ai.id, :checked => true) %> <%= ai.name %></th>
+                        <% else %>
+                            <th style="text-align:center;"> <%= radio_button_tag(:agent_image, ai.id) %> <%= ai.name %></th>
+                        <% end %>
+                    <% end %>
+                </tr>
+                <tr>
+                    <% @agent_images.each do |ai| %>
+                        <td style="padding: 4px; text-align: center;">
+                            <%= image_tag("/#{ai.path}", :style => "max-width: 200px; max-height: 200px;") %><br />
+                            <br />
+                            <% if ai.global != true %>
+                                <%= link_to({:action => "destroy_agent_image", :controller => "documents", :rootdoc_id => @rootdoc.id, :ai_id => ai.id}, {:method => :delete, :data => { :confirm => "Are you sure?" }}) do %>
+                                    <i class="glyphicon glyphicon-remove-sign"></i> Remove
+                                <% end %>
+                            <% end %>
+                        </td>
+                    <% end %>
+                </tr>
+            </table>
+            <br />
+            <p> You may name this custom document for easy reproduction later. If blank, a name will be automatically generated.</p>
+            <%= label_tag(:title, "Title") %>
+            <%= text_field_tag(:title) %><br />
+            <br />
+            <% if @rootdoc.include_party_date %>
+                <p>Please enter the date that the party, event, meal or park will be attended.</p>
+                <%= label_tag(:party_date, "Event Date") %>
+                <%= text_field_tag(:party_date, nil, :class => "jqdp") %><br />
+                <br />
+            <% end %>
+            <p>You may input up to three lines of custom text to stamp on the first page. Each line may contain up to 40 characters.</p>
+            <%= text_field_tag(:line_1, nil, :maxlength => 40, :size => 42) %>
+            <%= label_tag(:line_1, "First Line") %><br />
+            <%= text_field_tag(:line_2, nil, :maxlength => 40, :size => 42) %>
+            <%= label_tag(:line_2, "Second Line") %><br />
+            <%= text_field_tag(:line_3, nil, :maxlength => 40, :size => 42) %>
+            <%= label_tag(:line_3, "Third Line") %><br />
+            <br />
+            <%= submit_tag("Download with Customizations") %>
+        <% end %>
+        <br />
+    </div>
+</div>
+</div>

@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+#
+crt_watch:
+  id: 1000000000
+  search_start_date: 2014-12-23
+  search_end_date: 2014-12-25
+  party_size: 2
+  search_time_id: 6
+  restaurant_id: 12
+  user_id: 1
+  cfg_hash: adsfihj1
+  last_crawl: 1900-01-01 00:00:00
+  enabled: true
+  expired: false
+  last_notify: asdf12
+  notify_prefs: asdf12
+  paid: true
+  title: BoB
+  user_obtained:
+
+two:
+  search_start_date: 2014-10-23
+  search_end_date: 2014-10-23
+  party_size: 4
+  search_time_id: 
+  restaurant_id: 
+  user_id: 1

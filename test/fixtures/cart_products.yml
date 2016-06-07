@@ -1,0 +1,8 @@
+
+crt_cart_product:
+  id: 1
+  cart_id: 2
+  product_id: 2
+  qty: 3
+  passthru_id: 10
+  group_id: 2

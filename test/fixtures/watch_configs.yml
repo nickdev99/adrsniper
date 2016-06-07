@@ -1,0 +1,7 @@
+
+crt_watch_config:
+  id: 1
+  cfg_raw: 12ss
+  cfg_hash: 252asf
+  restaurant_id: 16
+  scan_cooldown: 11111aa

@@ -1,0 +1,9 @@
+
+
+crt_group:
+  id: 1
+  code: G1XF34
+  name: Disney Rocks Test
+  discount_type: Percentage
+  discount_size: 10%
+  uses_left: 50

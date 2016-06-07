@@ -1,0 +1,9 @@
+
+crt_user_product:
+  id: 1
+  user_id: 1
+  product_id: 2
+  qty: 3
+  last_use: 1900-01-01 00:00:00
+  passthru_id: 155
+  group_id: 1523

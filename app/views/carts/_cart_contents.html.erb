@@ -1,0 +1,56 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-10 col-md-offset-1 col-xs-12">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th class="text-center">Price</th>
+                        <th> </th>
+                    </tr>
+                </thead>
+                <% if @show_cps.empty? %>
+                <tr>
+                    <td colspan="3" style="text-align: center; font-weight: bold;">No products in your cart yet.</td>
+                </tr>
+                <% else %>
+                    <% @show_cps.each do |cp| %>
+                <tbody>
+                    <tr>
+                        <td class="col-sm-8 col-md-6">
+                        <div class="media">
+                            <!---- <a class="thumbnail pull-left" href="#"> <img class="media-object" src="" style=""> </a> ---->
+                            <div class="media-body">
+                                <%= cp['obj'].product.name %><%= if cp['passthru_desc'] then " #{cp['passthru_desc']}" end %><br />
+                                    <% if cp['obj'].group_id.present? %>
+                                        <span class="group_discount_text"><%= "Group #{cp['obj'].group.name} discount applied: #{cp['obj'].group.discount_size}#{if cp['obj'].group.discount_type == 'pct' then "%" else "$" end} off." %></span>
+                                    <% end %>
+                            </div>
+                        </div></td>
+                        <td class="col-sm-1 col-md-1" style="text-align: center">
+                        <strong> <%= cp['obj'].qty %> </strong>
+                        </td>
+                        <td class="col-sm-1 col-md-1 text-center"><strong>$<%= cp['price'] %></strong></td>
+                        <td class="col-sm-1 col-md-1">
+
+                    <%= form_tag("/carts/del", :style => "display: inline;") do %>
+                        <input type="hidden" name="prod_id" value="<%= cp['obj'].product.id %>">
+                        <% if cp['obj'].passthru_id %>
+                            <input type="hidden" name="passthru_id" value="<%= cp['obj'].passthru_id %>">
+                        <% end %>
+                        <button type="submit" class="btn btn-danger" value=""<%= if cp['obj'].qty > 1 then "Remove one" else "Remove" end %>" /><span class="glyphicon glyphicon-remove""></span> Remove </button>
+                    <% end %>
+                    <% end %>
+                    <% end %>
+                    </td>
+                    </tr>
+                        <td><h3>Total</h3></td>
+                        <td>   </td>
+                        <td class="text-right"><h4> <strong> $<%= @cumulative_price %></strong> (<%= @cumulative_qty %> items) </h4></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

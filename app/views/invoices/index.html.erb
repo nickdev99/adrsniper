@@ -1,0 +1,121 @@
+<% if session[:show_google_conv_snippet] %>
+    <!-- Google Code for wdwtools registration Conversion Page -->
+    <script type="text/javascript">
+/* <![CDATA[ */
+    var google_conversion_id = 1067203388;
+    var google_conversion_language = "en";
+    var google_conversion_format = "3";
+    var google_conversion_color = "ffffff";
+    var google_conversion_label = "8tu1CJCbjQkQvPbw_AM";
+    var google_conversion_value = 10.000000;
+    var google_remarketing_only = false;
+    /* ]]> */
+    </script>
+    <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+    </script>
+    <noscript>
+        <div style="display:inline;">
+            <img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/1067203388/?value=10.000000&amp;label=8tu1CJCbjQkQvPbw_AM&amp;guid=ON&amp;script=0"/>
+        </div>
+    </noscript>
+    <% session[:show_google_conv_snippet] = false %>
+<% end %>
+
+<div class="container">
+    <div class="row" style="margin-top:7em">
+        <div class="col-lg-12">
+            <div class="tabbable">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#pane1" data-toggle="tab">Invoices</a></li>
+                    <li><a href="#pane2" data-toggle="tab">Subscription management</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="pane1" class="tab-pane active">
+                        <h4>These are your invoices.</h4>
+                        <br />
+                        <br />
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>Issued</th>
+                                <th>Amount</th>
+                                <th>Description</th>
+                                <th>Paid</th>
+                            </tr>
+                            <% if @invoices.length < 1 %>
+                                <tr>
+                                    <td colspan="4">Nothing here yet.</td>
+                                </tr>
+                            <% end %>
+                            <% @invoices.reverse_each do |inv| %>
+                                <tr>
+                                    <td><%= inv.timestamp %></td>
+                                    <td><%= inv.amount %></td>
+                                    <td><%= inv.description %></td>
+                                    <td><%= inv.paid %></td>
+                                </tr>
+                        <% end %>
+                        </table>
+                        <% if !@cards.empty? %>
+                        We have this card on file:<br />
+                        <br />
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>Brand</th>
+                                <th>Last Four</th>
+                                <th>Expiration</th>
+                            </tr>
+                            <% @cards.each do |c| %>
+                                <tr>
+                                    <td><%= c.brand %></td>
+                                    <td> <%= c.last_four %></td>
+                                    <td><%= c.expiration_month %>/<%= c.expiration_year %></td>
+                                </tr>
+                            <% end %>
+                        </table>
+                        <%= link_to 'Replace this card.', invoices_add_card_path, :class => 'btn'  %><br />
+                        <br />
+                        <% else %>
+                            We don't have a card on file yet. It is important to have a card on file before obtaining any recurring services. Please <%= link_to 'add one', invoices_add_card_path %>.<br />
+                        <% end %>
+                        <br />
+                    </div>
+                    <div id="pane2" class="tab-pane">
+                        <h4> Subscriptions </h4>
+                        <%
+                        @extra_days_product = Product.where("name = ?", "10 Extra Days (Elite)")[0]
+                        @elite_product = Product.where("name = ?", "WDWTools Elite Membership")[0]
+                        %>
+                        <% if @user.has_elite %>
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th>Subscription type</th>
+                                    <th>Amount</th>
+                                    <th>Next renew</th>
+                                    <th>Quantity</th>
+                                </tr>
+                                    <tr>
+                                        <td> Elite Membership </td>
+                                        <td> $99.99 </td>
+                                        <td><%= @user.elite_thru %></td>
+                                        <td> 1 </td>
+                                    </tr>
+                                <% if UserProduct.does_user_own?(@user.id, @extra_days_product.id) %>
+                                <tr>
+                                        <td> 10 Extra Days </td>
+                                        <td> $<%= (UserProduct.where("user_id = ? AND product_id = ?", @user.id, @extra_days_product.id)[0].qty * 10) %>.00 </td>
+                                        <td><%= @user.elite_thru %></td>
+                                        <td> <%= UserProduct.where("user_id = ? AND product_id = ?", @user.id, @extra_days_product.id)[0].qty %> </td>
+                                </tr>
+
+                                <% else %>
+                                <% end %>
+                            </table>
+                        <% else %>
+                            <h3> You have no current subscriptions </h3>
+                        <% end %>
+                    </div>
+                </div><!-- /.tab-content -->
+            </div><!-- /.tabbable -->
+        </div>
+    </div> <!-- row -->
+</div> <!-- container -->

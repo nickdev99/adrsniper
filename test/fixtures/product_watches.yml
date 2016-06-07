@@ -1,0 +1,7 @@
+
+crt_product_watch:
+  id: 1
+  product_id: 1
+  days_avail: 3
+  sticky_days: true
+  lifetime_in_days: 30

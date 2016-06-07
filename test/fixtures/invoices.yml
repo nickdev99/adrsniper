@@ -1,0 +1,10 @@
+
+crt_invoice:
+  id: 1
+  user_id: 1
+  timestamp: 1900-01-01 00:00:00
+  amount_cents: 12
+  description: This is a magic invoice TEST
+  paid: true
+  payment_event_id: ASDF943DFA
+  payment_method_id: 68656

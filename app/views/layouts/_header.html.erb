@@ -1,0 +1,63 @@
+<header>
+	<nav class="navbar">
+		<div class="top-nav">		
+			<div class="weather pull-left">
+				<i class="fa fa-sun-o"></i>
+				<a class="temperature">64/39</a>
+			</div>
+			<div class="park-hours pull-left hidden-xs">
+				<a href="#">today’s Park hours</a>
+			</div>
+			<div class="account pull-right hidden-xs">
+				<i class="fa fa-user"></i>
+				<a href="#">Account</a>
+			</div>			
+			<div class="watches pull-right hidden-xs">
+				<i id="watchesPopover" class="fa fa-volume-up" data-placement="bottom" data-inner="#watches"></i>
+				<a href="#">Watches</a>
+			</div>
+
+			<div class="visible-xs pull-right">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarCollapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+		</div>
+	</nav>
+
+	<div class="logo-container-mobile visible-xs">
+		<a href="index.html" class="brand">
+			<img src="/assets/logo.png">
+		</a>
+	</div>
+
+	<div class="collapse navbar-collapse" id="navbarCollapse">
+
+		<div class="main-nav">
+            <a href="<%= url_for(controller: :news, action: :index) %>">
+				<i class="fa fa-magic"></i>
+				<span>news</span>
+			</a>
+			<a href="dining.html">
+				<i class="fa fa-cutlery"></i>
+				<span>dining</span>
+			</a>
+            <a href="<%= url_for(controller: :welcome, action: :index) %>" class="brand hidden-xs">
+				<img src="/assets/logo.png">
+			</a>
+			<a href="#">
+				<i class="fa fa-folder-open"></i>
+				<span>docs</span>
+			</a>
+			<a href="#">
+				<i class="fa fa-shopping-cart"></i>
+				<span>cart</span>
+			</a>
+		</div>
+	</div><!-- /.navbar-collapse -->
+    <%= render :partial => 'layouts/watches' %>
+	
+</header>

@@ -1,0 +1,21 @@
+<% if !@invitations.empty? %>
+You own these invites.
+<br />
+<% if @open_reg %>
+   <b>Invites are not necessary for new registrants right now. Tell your friends to sign up directly!</b><br />
+<% end %>
+<br />
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Code</th>
+        <th>Status</th>
+    </tr>
+<% @invitations.each do |inv| %>
+    <tr>
+        <td><%= inv.code %></td><td> <%= inv.redeemed_timestamp.nil? ? "OPEN" : "USED #{time_ago_in_words inv.redeemed_timestamp} ago" %></td>
+    </tr>
+<% end %>
+</table>
+<% else %>
+    <p>You don't have any invites yet. Stay tuned!</p>
+<% end %>

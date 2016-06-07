@@ -1,0 +1,9 @@
+
+crt_restaurant:
+  id: 1
+  name: Cinderella's in Yella
+  lookup_id: 16
+  main_url: test.mickytown.com
+  pricing_in_res: true
+  img_name: CRT
+  event_only_venue: false

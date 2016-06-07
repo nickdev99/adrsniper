@@ -1,0 +1,28 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require jquery-ui/datepicker
+ *= require flexslider.css
+ *= require pickadate/default
+ *= require pickadate/default.time
+ *= require_tree .
+ */
+
+ .validation_error { color: red; font-weight: bold; border: 3px solid #440000; padding: 3px;  }
+
+ body { background-color: #210088; }
+ #raw_container {width: 85%; margin-left: auto; margin-right: auto; }
+ #container { background-color: white; padding: 4px; }
+
+ .testimonial-container { background-color: #ddd; padding: 5px; margin: 7px; clear: both; }
+ .testimonial { padding-bottom: 3px; margin-bottom: 5px; font-style: italic; border-bottom: 2px dotted gray; font-size: 1.2em; }
+ .testimonial-attribution a { color: navy ! important; }
+ .testimonial-attribution { font-size: 0.9em; }

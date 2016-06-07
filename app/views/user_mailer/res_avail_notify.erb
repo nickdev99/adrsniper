@@ -1,0 +1,15 @@
+We've found an open reservation slot for <% if @watch.title.present? %> "<%=@watch.title%>" <% end %> at <%= @watch.restaurant.name %> (party of <%= @watch.party_size %>) between your specified search dates of <%= @watch.search_start_date %> and <%= @watch.search_end_date%>.<br />
+<br />
+The available time(s) are:<br />
+<% @times.each do |t| %>
+    <br />
+    * <%= t[0].strftime("%l:%M %p on %A, %B %e") %> (<a href="<%= t[1] %>">click here to go straight to booking page</a>)
+<%end%>
+<br />
+<br />
+Please book this immediately!
+<br />
+If you're unable to use Disney's site right now, you can probably get the same timeslot by calling the reservation hotline at 1-407-939-5277.
+<br />
+If you're booking this for someone else, please have their My Disney Experience login information ready or call the number above.
+<br />

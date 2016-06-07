@@ -1,0 +1,10 @@
+<%= form_for @invitation do |f|  %>
+    Create this many invites:<br />
+    <%= text_field_tag 'create_num', 1, :class => 'text_field input-mini' %>
+    <br />
+    for each of these users.<br />
+    <%= f.collection_select :owner_id, User.all, :id, :email, {}, :class => "dropdown multiselect_all", :multiple => "multiple" %>
+    <br />
+    <br />
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+<% end %>

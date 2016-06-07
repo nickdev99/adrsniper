@@ -1,0 +1,46 @@
+<%- title "Disney Dining Search Results" %>
+<div class="search-layout" id="search-container">
+
+    <%= render :partial => 'layouts/header' %>
+
+	<div class="page-wrapper">
+		<div class="banner">
+			<h2 class="white text-center hidden-xs">Search results</h2>
+			<h3 class="white text-center visible-xs">Search results</h3>
+		</div>
+
+		<div class="result-container container clearfix">
+
+            <%= render :partial => 'layouts/search_box', locals: {show_filters: true} %>
+			<div class="pull-left">
+				<div class="content">
+				
+					<div class="v-center badges-wrapper">
+						<div class="information col-sm-6 col-xs-12 v-center">
+							<div class="col-xs-5 text-center">
+								<div class="inline-block">
+									<div class="info-badge">
+										<i class="fa fa-bell"></i>
+									</div>
+								</div>
+							</div>
+							<div class="description col-xs-7">Create a watch for a restaurant and we’ll notify you when there’s an opening.</div>
+						</div>
+						<div class="information inverted col-sm-6 col-xs-12 v-center">
+							<div class="col-xs-5 text-center">
+								<div class="inline-block">
+									<div class="info-badge">
+										<div class="number">10</div>
+										<div class="text">DAYS</div>
+									</div>
+								</div>
+							</div>
+							<div class="description col-xs-7">Total span of days you can watch for an opening to your favorite restauarant.</div>
+						</div>
+					</div><!-- end badges-wrapper -->
+
+                    <div id="dine_content">
+                    </div>
+				</div><!-- end content -->
+			</div><!-- end move-to-left -->
+		</div><!-- end result-container -->

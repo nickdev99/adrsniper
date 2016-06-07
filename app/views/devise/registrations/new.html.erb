@@ -1,0 +1,78 @@
+<div class="container">
+    <div class="row" style="margin-top:7em">
+        <div class="col-sm-12 col-md-10 col-md-offset-1 col-xs-12">
+
+            <%= bootstrap_flash %>
+
+            <h2>Sign up</h2>
+
+            <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {'role' => 'form'}) do |f| %>
+              <%= devise_error_messages! %>
+
+              <div class="form-group">
+                  <%= f.label :email %>
+                  <%= f.email_field :email, :autofocus => true, :class => 'form-control' %>
+              </div>
+              <div class="form-group">
+                  <%= f.label :password %>
+                  <%= f.password_field :password, :class => 'form-control' %>
+              </div>
+              <div class="form-group">
+                  <%= f.label :password_confirmation %>
+                  <%= f.password_field :password_confirmation, :class => 'form-control' %>
+              </div>
+              <div class="form-group">
+                  <%= f.label :first_name %>
+                  <%= f.text_field :first_name, :class => 'form-control' %>
+              </div>
+              <div class="form-group">
+                  <%= f.label :last_name %>
+                  <%= f.text_field :last_name, :class => 'form-control' %>
+              </div>
+              <div class="form-group">
+                  <%= f.label :addr_line1, "Address line 1" %>
+                  <%= f.text_field :addr_line1, :class => 'form-control' %>
+              </div>
+              <div class="form-group">
+                  <%= f.label :addr_line2, "Address line 2" %>
+                  <%= f.text_field :addr_line2, :class => 'form-control' %>
+              </div>
+              <div class="form-group">
+                  <%= f.label :city %>
+                  <%= f.text_field :city, :class => 'form-control' %>
+              </div>
+              <div class="form-group">
+                  <%= f.label :state %>
+                  <%= f.text_field :state, :class => 'form-control' %>
+              </div>
+              <div class="form-group">
+                  <%= f.label :postal_code %>
+                  <%= f.text_field :postal_code, :class => 'form-control' %>
+              </div>
+              <div class="form-group">
+                  <%= f.label :country_code %>
+                  <%= f.text_field :country_code, :class => 'form-control' %>
+              </div>
+              <p>You can register to receive SMS alerts when an email notification is delivered at no extra cost. Usage is strongly recommended to ensure that time-critical reservations are not overlooked.</p>
+              <div class="form-group">
+                  <%= f.label :sms_enabled %>
+                  <%= f.check_box :sms_enabled %>
+              </div>
+              <div class="form-group">
+                  <%= f.label :sms_phone_number %>
+                  <%= f.text_field :sms_phone_number, :class => 'form-control' %>
+              </div>
+
+              <br />
+              <%= f.submit "Sign up", :class => 'btn btn-default' %>
+            <% end %>
+        </div> <!-- col-lg-12 -->
+    </div> <!-- row -->
+
+    <div class="row" style="margin-top:1em">
+        <div class="col-lg-12">
+            <%= render "devise/shared/links" %>
+        </div>
+    </div>
+
+</div> <!-- container -->

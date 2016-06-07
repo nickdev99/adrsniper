@@ -1,0 +1,35 @@
+
+crt_user:
+  id: 1
+  email: asdfh@asf.com
+  encrypted_password: 1ASDFADSFL124JKHD
+  reset_password_token: asdfkj
+  reset_password_sent_at: 1900-01-01 00:00:00
+  remember_created_at: 1900-01-01 00:00:00
+  sign_in_count: 1
+  current_sign_in_at: 1900-01-01 00:00:00
+  last_sign_in_at: 1900-01-01 00:00:00
+  current_sign_in_ip: 192.168.1
+  last_sign_in_ip: 192.168.2
+  disney_email: asdfhjkh@disney_email.com
+  disney_password: shinnerdinner
+  max_watch_days: 11
+  sms_phone_number: 11155-555-55
+  sms_enabled: true
+  voice_phone_number: 9-111-55-6
+  subscription_active: true
+  subscription_thru: 1900-01-01 00:00:00
+  addr_line1: asdf 12
+  addr_line2: asdf1
+  city: asdf
+  state: flo-rida
+  postal_code: 666442
+  country_code: 1
+  first_name: bobby
+  last_name: booshay
+  subscription_renew: true
+  has_elite: false
+  elite_thru: 1900-01-01 00:00:00
+  fpp_reminders: true
+  fpp_last_sync: 1900-01-01 00:00:00
+  admin: 
